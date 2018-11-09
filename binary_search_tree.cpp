@@ -5,6 +5,7 @@
 using namespace std;
 
 void optsearchtree(int , float*, float *,int **);
+void nodeprinter(int, int,int **);
 
 int main() {
 	int n, **r;
@@ -22,6 +23,10 @@ int main() {
 	for (int i = 0; i < n; i++)
 		cin >> p[i];
 	optsearchtree(n, p, &minavg,r);
+
+	cout<<"minavg : "<< minavg<<endl;
+	cout << "입력순서 : ";
+	nodeprinter(1, n, r);
 }
 
 void optsearchtree(int n, float *p, float *minavg, int **r) {
@@ -64,23 +69,24 @@ void optsearchtree(int n, float *p, float *minavg, int **r) {
 		}
 	}
 
+	cout << "A : " << endl;
 	for (i = 0; i <= n + 1; i++) {
 		for (j = 0; j <= n; j++) {
 			if (a[i][j] > 0)
-				cout << a[i][j] << " ";
+				cout<< a[i][j]<<" ";
 			else
-				cout << "0";
+				cout << "0     ";
 		}
 		cout << endl;
 	}
 
-
+	cout << "R : " << endl;
 	for (i = 0; i <= n + 1; i++) {
 		for (j = 0; j <= n; j++) {
 			if (a[i][j] > 0)
-				cout << r[i][j] << " ";
+				cout <<" "<< r[i][j];
 			else
-				cout << "0";
+				cout << " 0";
 		}
 		cout << endl;
 	}
@@ -89,3 +95,17 @@ void optsearchtree(int n, float *p, float *minavg, int **r) {
 
 }
 
+
+void nodeprinter(int i, int j, int **r) {
+	int k;
+	k = r[i][j];
+
+	if (k == 0) {
+		return;
+	}
+	else {
+		cout << k<<" ";
+		nodeprinter(i, k-1,r);
+		nodeprinter(k+1, j, r);
+	}
+}
