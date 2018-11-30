@@ -54,7 +54,7 @@ void dijkstra(int n, int **w, int **f) {
 		cout << "vnear:" << vnear<<endl;
 		f[t-1][0] = touch[vnear-2];
 		f[t-1][1] = vnear;
-		f[t-1][2] = min;
+		f[t-1][2] = w[touch[vnear-2]-1][vnear-1];
 		for (int i = 0; i < n-1; i++)
 			if ((length[vnear-2] + w[vnear-1][i+1]) < length[i]) {
 				length[i] = length[vnear-2] + w[vnear-1][i+1];
