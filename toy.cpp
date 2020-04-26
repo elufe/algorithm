@@ -110,15 +110,15 @@ int maketree(string total, node** parent) {				//트리 생성 함수 - 오류 발생시 음
 
 
 	check = maketree(left_new, &((*parent)->left_node));	// left 노드 생성
-	cal.push((*parent)->left_node->value);					// left 노드 결과값 스택에 저장
 	if (check < 0)											// left 노드 정상 생성 여부 검사
 		return check;
-
+	cal.push((*parent)->left_node->value);					// left 노드 결과값 스택에 저장
+	
 	check = maketree(right_new, &((*parent)->right_node));	// right 노드 생성
-	cal.push((*parent)->right_node->value);					// right 노드 결과값 스택에 저장
 	if (check < 0)											// right 노드 정상 생성 여부 검사
 		return check;
-
+	cal.push((*parent)->right_node->value);					// right 노드 결과값 스택에 저장
+	
 
 	if (op_new[0] == 'M'|| op_new[0] == 'm')				// operator 타입 검사
 		oper_type = 1;										// minus -> 1
@@ -275,7 +275,9 @@ int main() {
 			}
 		}
 		else if (menu == 3) {	//종료
+
 			return 0;
+
 		}
 		menu = -1;
 	}
